@@ -1,24 +1,20 @@
-.pagination {
-  display: inline-block;
+
+.search  {
+  margin-left:10px !important;
+}
+#right {
+ margin-left :10px !important;
 }
 
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
+#left  {
+  margin-right: 10px !important;
 }
 
-.pagination a.active {
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
+#showpages {
+  margin-left:6px !important;
 }
-
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
-  border-radius: 5px;
-}
-.search {
-  margin:10px !important;
+.box {
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 15px;
 }

@@ -23,13 +23,25 @@
       if(pages ==0 ){
          return;
       }
+      if(pages > totalpages){
+         pages = totalpages;
+      }
+      if(pages < 0){
+         pages =1;
+      }
       pages--;
       load(handler);
       
    });
    $( "#right" ).click(function() {
-      if(pages >= totalpages ){
+      if(pages+1 >= totalpages ){
          return;
+      }
+      if(pages > totalpages){
+         pages = totalpages;
+      }
+      if(pages < 0){
+         pages =1;
       }
       pages++;
       load(handler);

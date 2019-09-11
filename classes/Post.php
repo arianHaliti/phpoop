@@ -39,7 +39,7 @@ class Post {
            }
         $combined =$p * $perpage;
         $posts = $this->conn->query(
-            "SELECT p.id,p.title,p.body,p.created_at,u.id,u.username FROM posts p INNER JOIN users u on u.id = p.user_id LIMIT {$perpage} OFFSET {$combined}");
+            "SELECT p.id as post_id ,p.title,p.body,p.created_at,u.id as user_id ,u.username FROM posts p INNER JOIN users u on u.id = p.user_id LIMIT {$perpage} OFFSET {$combined}");
         
            $count = $this->conn->query("SELECT count(*) AS count FROM posts");
            return ["posts" => $posts,

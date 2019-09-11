@@ -33,6 +33,5 @@ class DB {
    public function lastId(){
       return $this->pdo->lastInsertId();
    }
-   
 
 }

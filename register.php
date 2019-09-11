@@ -50,21 +50,22 @@
       <?php require_once 'header.php';?>
       <div class="container">
          <form action ="" method="post" name ="register" onsubmit="return validate()">
+         <div class="form-group ">
             <label for="username"> Username</label>
-            <input type="text" name="username" id="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] :'' ?>"><br>
+            <input class="form-control" type="text" name="username" id="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] :'' ?>"><br>
 
             <label for="fullname"> Full Name</label>
-            <input type="text" name="fullname" id="fullname" value="<?php echo isset($_POST['fullname']) ? $_POST['fullname'] :'' ?>"><br>
+            <input class="form-control" type="text" name="fullname" id="fullname" value="<?php echo isset($_POST['fullname']) ? $_POST['fullname'] :'' ?>"><br>
 
             <label for="password"> Password</label>
-            <input type="password" name="password" id="password" value=""><br>
+            <input class="form-control" type="password" name="password" id="password" value=""><br>
 
             <label for="password_confirm"> Confirm Password</label>
-            <input type="password" name="password_confirm" id="password_confirm" value=""><br>
+            <input class="form-control" type="password" name="password_confirm" id="password_confirm" value=""><br>
 
-            <input type="submit" value="register"><br>
+            <input type="submit" class="btn btn-primary" value="register"><br>
            
-            <div id="errors" style="color: red"></div>
+            <div id="errors"  style="color: red"></div>
             <?php 
             if($_POST){
                if($validate !== 'Success'){
@@ -76,6 +77,7 @@
             }
           
             ?>
+         </div>
          </form>
       </div>
       <?php require_once 'footer.php';?>

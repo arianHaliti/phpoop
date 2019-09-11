@@ -28,18 +28,20 @@ if($_POST){
   <?php require_once 'header.php';?>
       <div class="container">
          <form action ="" method ="post" name ="login" onsubmit="return validate()" >
+         <div class="form-group ">
             <label for ="username">Username</label>
 
-            <input type="text" name= "username" id="username">
+            <input class="form-control" type="text" name= "username" id="username">
 
             <br>
             <label for ="password">Password</label>
 
-            <input type="password" name= "password" id="password">
+            <input class="form-control" type="password" name= "password" id="password">
             <br>
            
-            <input type="submit" value ="Log in">
+            <input type="submit" class="btn btn-primary" value ="Log in">
             <div id="errors" style="color: red"></div>
+         </div>
          </form>
          <?php 
          if($_POST){

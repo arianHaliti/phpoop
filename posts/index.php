@@ -19,16 +19,8 @@ require_once '../header.php';?>
 
   </tbody>
 </table>
-<div class="pagination">
-    <a href="#" id="left">&laquo;</a>
-
-    <div id ="searchbox">
-    </div>
-    Of
-    <span id="showpages"> </span>
-    <a href="#" id="right">&raquo;</a>
-    <a href="#" id ="search" class="search"><i class="fa fa-car"></i></a>
-</div>
+<img id="loading" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"  style=" display: none; margin:0 auto;  vertical-align:middle; text-align:center" height="42" width="42">
+<?php include('../inc/pagination.php');?>
 
 <?php require_once '../footer.php';?>
 
@@ -42,7 +34,7 @@ function show($data){
    console.log($data);
    
       
-      $("#list").append('<tr><th scope="row">'+$data[i]['id']+'</th><td>'+$data[i]['title']+'</td><td>'+$data[i]['body']+'</td><td>'+$data[i]['created_at']+'</td><td>'+$data[i]['username']+'</td></tr>');
+      $("#list").append('<tr><th scope="row">'+$data[i]['post_id']+'</th><td> <a href="/phpoop/posts/post.php?id='+$data[i]['post_id']+'">'+$data[i]['title']+'</a></td><td>'+$data[i]['body']+'</td><td>'+$data[i]['created_at']+'</td><td> <a href="/phpoop/users/user.php?id='+$data[i]['post_id']+'">'+$data[i]['username']+'</a></td></tr>');
    }
 }
 </script>

@@ -13,10 +13,17 @@
             <li class="nav-item active">
                <a class="nav-link" href="/phpoop">About</a>
             </li>
-
-            <li class="nav-item active">
-               <a class="nav-link" href="<?php echo APPROOT . '/posts/create.php' ?>">Create Post</a>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Post
+               </a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+               <a class="dropdown-item" href="/phpoop/posts">Posts</a>
+               <a class="dropdown-item" href="<?php echo APPROOT . '/posts/create.php' ?>">Create Post</a>
+               
+               </div>
             </li>
+         
          </ul>
 
          <ul class="navbar-nav ml-auto">
