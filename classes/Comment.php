@@ -25,7 +25,7 @@ class Comment {
             
     }
     // some of the code repeats maybe put it inside DB.class
-    public function getComments($p){
+    public function getComments($p,$post_id){
         try{
            $perpage = 5;
            if ( filter_var($p, FILTER_VALIDATE_INT) === false ) {
@@ -36,12 +36,12 @@ class Comment {
         "SELECT c.id as comment_id ,c.body,c.created_at ,u.username
         FROM comments c INNER JOIN users u on u.id = c.user_id INNER JOIN posts p on p.id = c.post_id 
         WHERE p.id = ?
-        LIMIT {$perpage} OFFSET {$combined}");
+        LIMIT {$perpage} OFFSET {$combined}",["post_id" => $post_id]);
         
         $count = $this->conn->query(
             "SELECT count(*) AS count 
              FROM comments c INNER JOIN posts p on p.id = c.post_id 
-             WHERE p.id = ? ");
+             WHERE p.id = ? ",["post_id" => $post_id]);
              
         return ["comments" => $comments,
                 "count" => $count[0],

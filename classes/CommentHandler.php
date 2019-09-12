@@ -4,7 +4,10 @@ require_once '../init.php';
    if(isset($_POST['value'])){
       $value = $_POST['value'];
       $post_id = $_POST['post_id'];
-      
+      if(!isset($_SESSION['id'])){
+         echo json_encode($data = ["auth" => "User is not loged in"]);
+         return;
+      }
 
       $data =$comment->create(
       [
@@ -18,25 +21,18 @@ require_once '../init.php';
       echo json_encode($data);
    }else{
       $page = $_POST['page'];
-    
+      $post_id = $_POST['id'];
+     
       
-      $data= $post->getComments($page);
-      echo json_encode([
-         'data' => [1,2,3],
-         'count' => 4,
-         'perpage' =>6
-   ]);
-      // $count = $data['count'];
-      // $perpage = $data['perpage'];
-      // $data = $data['posts'];
+      $data= $comment->getComments($page,$post_id);
+
+      $count = $data['count'];
+      $perpage = $data['perpage'];
+      $data = $data['comments'];
   
-      
-      
-      // // print_r($users);
-      // // $myJSON = json_encode($users);
-      // echo json_encode([
-      //     'data' => $data,
-      //     'count' => $count,
-      //     'perpage' =>$perpage
-      // ]);
+      echo json_encode([
+          'data' => $data,
+          'count' => $count,
+          'perpage' =>$perpage
+      ]);
    }

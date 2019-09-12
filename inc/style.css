@@ -18,3 +18,11 @@
   border: 5px solid gray;
   margin: 15px;
 }
+.comment-box{
+  border: solid grey;
+  margin-bottom: 40px;
+  padding: 5px
+}
+.pagination{
+  margin-bottom: 30px;
+}

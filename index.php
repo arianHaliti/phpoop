@@ -22,7 +22,7 @@ $conn = new DB();
       
       <?php require_once 'footer.php';?>
       <script>
-
+         let id = 11;
          let handler = "classes/UserHandler"
      
          function show($data){

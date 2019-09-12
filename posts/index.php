@@ -27,7 +27,7 @@ require_once '../header.php';?>
 <script>
 
 let handler = "../classes/PostHandler"
-
+let id =null;
 function show($data){
    $("#list").empty();
    for(let i = 0 ; i< $data.length; i++){

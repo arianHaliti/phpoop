@@ -59,7 +59,7 @@
        {
          type :"POST",
          url: handler+".php",
-         data: {'page':pages},
+         data: {'page':pages,id},
          dataType : "json",
          success: function(data) {
             // console.log(data);
