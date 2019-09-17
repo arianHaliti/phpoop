@@ -12,6 +12,7 @@ class Comment {
        $res = $this->conn->query(
         "INSERT INTO comments (`body`, `post_id`, `user_id`) VALUES (?,?,?)",
         $params);
+        $res = $this->conn->singleRow();
         return $this->conn->lastId();
      
     }
@@ -19,8 +20,9 @@ class Comment {
         $data = $this->conn->query(
             "SELECT c.id, c.body, u.username,c.created_at FROM comments c INNER JOIN users u ON c.user_id = u.id WHERE c.id = ?",
             ["id" =>$comment]);
+        $data = $this->conn->singleRow();
      
-            return $data[0];
+            return $data;
     
             
     }
@@ -37,14 +39,15 @@ class Comment {
         FROM comments c INNER JOIN users u on u.id = c.user_id INNER JOIN posts p on p.id = c.post_id 
         WHERE p.id = ?
         LIMIT {$perpage} OFFSET {$combined}",["post_id" => $post_id]);
+        $comments =$this->conn->getRows();
         
         $count = $this->conn->query(
             "SELECT count(*) AS count 
              FROM comments c INNER JOIN posts p on p.id = c.post_id 
              WHERE p.id = ? ",["post_id" => $post_id]);
-             
+        $count = $this->conn->singleRow();
         return ["comments" => $comments,
-                "count" => $count[0],
+                "count" => $count,
                 "perpage" => $perpage
                 ];
         }catch(Execption $e){

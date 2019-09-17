@@ -14,8 +14,8 @@ class User{
    public function loginUser($username, $password){
       
       $user = $this->conn->query("SELECT * FROM users where username = ?",['username'=> $username]);
+      $user = $this->conn->singleRow();
       if($user){
-         $user = $user[0];
          if($user->password === Hash::make($password, $user->salt)){
             
             Session::set($user->id,$user->username);
@@ -27,6 +27,18 @@ class User{
       }
       return false;
    }
+   public function getUser($id){
+      $data = $this->conn->query(
+         "SELECT * FROM users u  WHERE u.id = ?",
+         ["id" =>$id]);
+     $data = $this->conn->singleRow();
+     if($data == "Error" || !($data)){
+         header('location: /phpoop/index.php');
+         return "Error";
+         
+     }
+         return $data;         
+   }
    public function getUsers($p){
       try{
          $perpage = 5;
@@ -35,10 +47,12 @@ class User{
          }
       $combined =$p * $perpage;
       $users = $this->conn->query("SELECT username, fullname, id FROM users LIMIT {$perpage} OFFSET {$combined}");
-
-         $count = $this->conn->query("SELECT count(*) AS count FROM users");
+      $users = $this->conn->getRows();
+      $count = $this->conn->query("SELECT count(*) AS count FROM users");
+      $count = $this->conn->singleRow();
+      
          return ["users" => $users,
-               "count" => $count[0],
+               "count" => $count,
                "perpage" => $perpage
                ];
       }catch(Execption $e){

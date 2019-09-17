@@ -62,13 +62,13 @@
          data: {'page':pages,id},
          dataType : "json",
          success: function(data) {
-            // console.log(data);
+            console.log(data);
             
-            if(data['error']){
+            if(data['error'] ){
                console.log("Something");
                
             }
-            else if(data['data'].length > 0){
+            else if(data['data'] !=null && data['data'].length > 0){
                show(data['data']);
                
                perpage = data['perpage'];
@@ -78,8 +78,8 @@
                 $("#showpages").html(totalpages);
                
             }else{
-               $("#list").html("<h1  style=' display: table-cell; margin:0 auto;  vertical-align:middle; text-align:center'>No Data Found</h1>");
-               
+               $("#list").html("<h4  style=' display: table-cell; margin:0 auto;  vertical-align:middle; text-align:center'>No Data Found</h4>");
+               $(".pagination").css("display",'none');
             }
             $('#searchbox').empty();
             $('#searchbox').append(' <input id="distinctpage" maxlength="2" size= "5" type="number" name="page" value="'+ (pages +1 ) +'">');

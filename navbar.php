@@ -23,6 +23,16 @@
                
                </div>
             </li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Jobs
+               </a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+               <a class="dropdown-item" href="/phpoop/jobs">Available Jobs</a>
+               <a class="dropdown-item" href="<?php echo APPROOT . '/jobs/create.php' ?>">Create Job App</a>
+               
+               </div>
+            </li>
          
          </ul>
 
@@ -30,7 +40,7 @@
             
             <?php if (isset($_SESSION['id'])) : ?>
                <li class="nav-item active">
-                  <a class="nav-link" href="#">Welcom <?php echo $_SESSION['username']; ?> </a>
+                  <a class="nav-link" href="#">Welcome <?php echo $_SESSION['username']; ?> </a>
                </li>
                <li class="nav-item active">
                   <a class="nav-link" href="/phpoop/logout.php">Logout </a>
