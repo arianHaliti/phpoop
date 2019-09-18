@@ -3,33 +3,33 @@
 require_once '../init.php';
 require_once '../header.php';
 $job = new Job;
-if(isset($_POST['title'])){
-  // $job = $_POST['data'];
-  $title = $_POST['title'];
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $desc = $_POST['desc'];
-  $salary =$_POST['salary'];
-  $category = $_POST['category'];
-  print_r($_POST);
-  $job = new Job();
-$job->create([
-    'category_id' => $category,
-    'company' => $name,
-    'contact_email' => $email,
-    'contact_user' => $phone,
-    'description' =>$desc,
-    'title' => $title,
-    'salary' => $salary, 
-]);
-}
+// if(isset($_POST['title'])){
+//   // $job = $_POST['data'];
+//   $title = $_POST['title'];
+//   $name = $_POST['name'];
+//   $email = $_POST['email'];
+//   $phone = $_POST['phone'];
+//   $desc = $_POST['desc'];
+//   $salary =$_POST['salary'];
+//   $category = $_POST['category'];
+//   // print_r($_POST);
+//   $job = new Job();
+// $job->create([
+//     'category_id' => $category,
+//     'company' => $name,
+//     'contact_email' => $email,
+//     'contact_user' => $phone,
+//     'description' =>$desc,
+//     'title' => $title,
+//     'salary' => $salary, 
+// ]);
+// }
 
 $categories = $job->getAllCategories();
 
 
 ?>
-<form method="POST">
+<form id="job-form">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputTitle">Title</label>
@@ -104,7 +104,9 @@ $(document).ready(function(){
             data: {data},
             dataType : "json",
             success: function(data) {
-                console.log(data);
+                // console.log(data);
+                alert("Job application Created Redirecting to Application");
+                window.location.href = "http://localhost/phpoop/jobs/job.php?id="+data.data;
                 
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
